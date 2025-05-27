@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파비콘 생성기</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        canvas { border: 1px solid #ccc; margin: 10px; }
+        .download-section { margin: 20px 0; }
+        button { padding: 10px 20px; margin: 5px; background: #3B82F6; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #2563EB; }
+    </style>
+</head>
+<body>
+    <h1>🎲 디지털 인생 게임 파비콘 생성기</h1>
+    
+    <div class="download-section">
+        <button onclick="generateFavicons()">파비콘 생성</button>
+        <button onclick="downloadAll()">모든 파비콘 다운로드</button>
+    </div>
+    
+    <div id="canvases"></div>
+    
+    <script>
+        // 주사위 그리기 함수
+        function drawDice(ctx, size) {
+            const padding = size * 0.125; // 12.5% 패딩
+            const diceSize = size - (padding * 2);
+            const cornerRadius = size * 0.125;
+            
+            // 배경 그리기 (둥근 사각형)
+            ctx.fillStyle = '#3B82F6';
+            ctx.strokeStyle = '#1E40AF';
+            ctx.lineWidth = size * 0.03;
+            
+            // 둥근 사각형 그리기
+            ctx.beginPath();
+            ctx.roundRect(padding, padding, diceSize, diceSize, cornerRadius);
+            ctx.fill();
+            ctx.stroke();
+            
+            // 주사위 점들 그리기 (숫자 6)
+            ctx.fillStyle = 'white';
+            const dotRadius = size * 0.047; // 점 크기
+            const dotSpacing = diceSize / 4;
+            
+            // 왼쪽 열
+            const leftX = padding + dotSpacing;
+            const rightX = padding + diceSize - dotSpacing;
+            
+            for (let i = 0; i < 3; i++) {
+                const y = padding + dotSpacing + (i * dotSpacing);
+                
+                // 왼쪽 점
+                ctx.beginPath();
+                ctx.arc(leftX, y, dotRadius, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                // 오른쪽 점
+                ctx.beginPath();
+                ctx.arc(rightX, y, dotRadius, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+            
+            // 하이라이트 효과
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.lineWidth = size * 0.015;
+            ctx.beginPath();
+            ctx.roundRect(padding + 1, padding + 1, diceSize - 2, diceSize - 2, cornerRadius - 1);
+            ctx.stroke();
+        }
+        
+        // 파비콘 생성 함수
+        function generateFavicons() {
+            const sizes = [
+                { size: 16, name: 'favicon-16x16.png' },
+                { size: 32, name: 'favicon-32x32.png' },
+                { size: 180, name: 'apple-touch-icon.png' }
+            ];
+            
+            const container = document.getElementById('canvases');
+            container.innerHTML = '';
+            
+            sizes.forEach(({ size, name }) => {
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                canvas.title = name;
+                
+                const ctx = canvas.getContext('2d');
+                
+                // 안티앨리어싱 설정
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+                
+                drawDice(ctx, size);
+                
+                // 캔버스를 컨테이너에 추가
+                const wrapper = document.createElement('div');
+                wrapper.style.display = 'inline-block';
+                wrapper.style.textAlign = 'center';
+                wrapper.style.margin = '10px';
+                
+                const label = document.createElement('div');
+                label.textContent = `${name} (${size}x${size})`;
+                label.style.marginBottom = '5px';
+                label.style.fontSize = '12px';
+                
+                const downloadBtn = document.createElement('button');
+                downloadBtn.textContent = '다운로드';
+                downloadBtn.style.fontSize = '12px';
+                downloadBtn.style.padding = '5px 10px';
+                downloadBtn.onclick = () => downloadCanvas(canvas, name);
+                
+                wrapper.appendChild(label);
+                wrapper.appendChild(canvas);
+                wrapper.appendChild(document.createElement('br'));
+                wrapper.appendChild(downloadBtn);
+                
+                container.appendChild(wrapper);
+            });
+        }
+        
+        // 캔버스 다운로드 함수
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // 모든 파비콘 다운로드
+        function downloadAll() {
+            const canvases = document.querySelectorAll('canvas');
+            canvases.forEach((canvas, index) => {
+                setTimeout(() => {
+                    downloadCanvas(canvas, canvas.title);
+                }, index * 500); // 0.5초 간격으로 다운로드
+            });
+        }
+        
+        // 페이지 로드 시 자동 생성
+        window.onload = generateFavicons;
+    </script>
+</body>
+</html> 

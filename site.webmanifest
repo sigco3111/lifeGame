@@ -1,0 +1,33 @@
+{
+  "name": "디지털 인생 게임",
+  "short_name": "인생게임",
+  "description": "인생의 주요 사건들을 경험하고, 선택을 내리고, 재정을 관리하여 성공을 목표로 하는 웹 기반 보드게임",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#3B82F6",
+  "background_color": "#f0f9ff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "orientation": "landscape-primary"
+} 
