@@ -5,9 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "echo 'Static build - no compilation needed'",
-    "preview": "vite preview",
-    "start": "echo 'Static files ready'"
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^19.1.0",
@@ -15,6 +14,9 @@
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
     "typescript": "~5.7.2",
     "vite": "^6.2.0"
   }
