@@ -7,7 +7,7 @@ interface EventModalProps {
   currentPlayer: Player; // The player for whom this event is occurring
   allPlayers: Player[];
   onResolveOption: (option: LifeEventOption) => void;
-  onClose: (message?: string) // Optional message to pass if event had a direct effect
+  onClose: (message?: string) => void; // Optional message to pass if event had a direct effect
 }
 
 const EventModal: React.FC<EventModalProps> = ({ event, currentPlayer, allPlayers, onResolveOption, onClose }) => {

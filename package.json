@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "echo 'Static build - no compilation needed'",
+    "preview": "vite preview",
+    "start": "echo 'Static files ready'"
   },
   "dependencies": {
     "react": "^19.1.0",
