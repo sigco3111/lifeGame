@@ -1,1 +1,7 @@
- 
+# 이 파일은 실제 ICO 파일이 아닙니다.
+# 실제 ICO 파일을 생성하려면 generate-favicon.html을 브라우저에서 열어서 
+# PNG 파일들을 다운로드한 후, 온라인 ICO 변환기를 사용하거나
+# 이미지 편집 도구를 사용해 ICO 파일로 변환해주세요.
+
+# 또는 다음 명령어를 사용할 수 있습니다 (ImageMagick 설치 필요):
+# convert favicon-32x32.png favicon.ico 
