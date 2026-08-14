@@ -9,7 +9,9 @@
 
 플레이어들은 게임 보드를 따라 이동하며 다양한 인생 이벤트, 금전적 변화, 선택의 순간들을 마주하게 됩니다. 최종적으로 가장 많은 자산을 모은 플레이어가 승리합니다!
 
-실행 주소 : https://dev-canvas-pi.vercel.app/
+라이브 데모 : https://sigco3111.github.io/lifeGame/
+
+> **호스팅 이력**: 본 프로젝트는 Vercel에서 GitHub Pages로 이관되었습니다 (2026-08). 과거 Vercel alias는 더 이상 유효하지 않으므로 위 Pages URL을 사용해 주세요. `vercel.json`은 호스팅 이력 보존 차원에서 그대로 유지되어 있습니다 (Vercel 재배포 시 참고용).
 
 ---
 
